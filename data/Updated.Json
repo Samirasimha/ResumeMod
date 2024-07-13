@@ -1,0 +1,160 @@
+{
+  "Name": "Samirasimha Rajasimha",
+  "Phone": "(260)-905-9637",
+  "Email": "samirasimha.r@gmail.com",
+  "Links": [
+    {
+      "Title": "LinkedIn",
+      "Url": "linkedin.com/in/samirasimha"
+    },
+    {
+      "Title": "GitHub",
+      "Url": "github.com/Samirasimha"
+    }
+  ],
+  "Education": [
+    {
+      "University": "Purdue University",
+      "Program": "Master of Science",
+      "Major": "Computer Science",
+      "StartDate": "August 2022",
+      "EndDate": "May 2024",
+      "GPA": 3.83
+    },
+    {
+      "University": "Visvesvaraya Technological University",
+      "Program": "Bachelor of Engineering",
+      "Major": "Computer Science",
+      "StartDate": "August 2014",
+      "EndDate": "May 2018",
+      "GPA": 8.26
+    }
+  ],
+  "Experience": [
+    {
+      "CompanyName": "Gravity iLabs",
+      "Position": "Software Engineer",
+      "Location": "Bengaluru, Karnataka, India",
+      "StartDate": "January 2019",
+      "EndDate": "July 2022",
+      "Description": [
+        "Refactoring: Decoupled module-level code into scalable Micro Services, employing a plug-in approach to enable seamless modification or addition of Business Rules. This initiative significantly reduced future development times by 50%. Conducted a comprehensive refactoring of legacy REST APIs, resulting in an impressive 80% reduction in response times.",
+        "Role Based Approach: Introduced a robust role-based access management system, empowering users with complete control over product permissions. This strategic implementation allowed the development team to formulate business rules with a role-based perspective, enhancing overall user experience and configurability.",
+        "Componentization: Led the effort to break down UI elements into reusable Components and Widgets, fostering consistency across the product and expediting development processes. This initiative resulted in a 30% reduction in development time for new features. Additionally, it contributed to a 40% improvement in the product's overall user satisfaction rating, as reported in user feedback surveys.",
+        "Mentoring: Mentored and guided three interns, facilitating their immersion into the source code and the technology stack. Played a pivotal role in their professional development, fostering a collaborative and knowledge-sharing environment.",
+        "Applied Agile and Test-Driven Development principles to ensure high-quality software delivery.",
+        "Collaborated with cross-functional teams to implement Rest APIs and Microservices architecture."
+      ]
+    },
+    {
+      "CompanyName": "Infosys Ltd.",
+      "Position": "Intern",
+      "Location": "Mysuru, Karnataka, India",
+      "StartDate": "March 2018",
+      "EndDate": "May 2018",
+      "Description": [
+        "Developed and implemented Data Transformation logic for \"Prescriptive Analysis of an Online Store,\" improving processing efficiency by 30%.",
+        "Constructed Visual Dashboards resulting in a 20% increase in data accessibility and a 15% reduction in decision-making time.",
+        "Utilized IBM Cognos, Power BI, and SSIS to analyze and visualize data, contributing to a 25% improvement in project outcomes.",
+        "Collaborated with a cross-functional team to deliver solutions that met project objectives within strict deadlines.",
+        "Engaged in continuous learning, completing 40+ hours of training on emerging technologies and methodologies."
+      ]
+    },
+    {
+      "CompanyName": "Gravity iLabs",
+      "Position": "Intern",
+      "Location": "Bengaluru, Karnataka, India",
+      "StartDate": "July 2017",
+      "EndDate": "September 2017",
+      "Description": [
+        "Developed an Email Bot powered by Natural Language Processing, streamlining annual report generation and reducing processing time by 40%.",
+        "Leveraged technologies such as HTML, CSS, JavaScript, Microsoft Cognitive Services, and Google Firebase Database to design and implement efficient solutions.",
+        "Collaborated with the development team to troubleshoot issues, optimize performance, and ensure seamless integration with existing systems.",
+        "Received commendation for innovative problem-solving, effective communication, and dedication to project success."
+      ]
+    }
+  ],
+  "Projects": [
+    {
+      "Title": "Note Nirvana (Web App for Guitar Chords)",
+      "Type": "Course Project",
+      "University": "Purdue University",
+      "Location": "Fort Wayne, Indiana, USA",
+      "StartDate": "August 2023",
+      "EndDate": "December 2023",
+      "Description": [
+        "A feature-rich music tablature tool using React and Node.js. The project includes functionalities like auto-scroll, chords transpose, and chord simplification, elevating the user experience.",
+        "Implemented a secure metadata storage system for comprehensive song details and user preferences.",
+        "Contributed to both frontend and backend development, creating an intuitive React-based interface and ensuring efficient data handling with Node.js.",
+        "Collaborated within a team environment, conducting code reviews, and maintaining high coding standards.",
+        "Technologies utilized encompass React for the dynamic frontend, Node.js for the efficient backend, and Git for collaborative version control."
+      ]
+    },
+    {
+      "Title": "Furniture App Based on Augmented Reality",
+      "Type": "Course Project",
+      "University": "Visvesvaraya Technological University",
+      "Location": "Bengaluru, Karnataka, India",
+      "StartDate": "January 2018",
+      "EndDate": "October 2018",
+      "Description": [
+        "Published an article on the development of an Android app titled \"AR Furniture App\" using an augmented reality-based system at 2018 International Conference on Advances in Computing, Communications, and Informatics (ICACCI), IEEE Bengaluru",
+        "The app utilized the Kudan SDK to integrate AR content onto natural features detected from the surroundings."
+      ]
+    }
+  ],
+  "Skills": [
+    {
+      "Title": "Programming Languages and Frameworks",
+      "Items": [
+        "C#",
+        ".NET Core",
+        "JavaScript",
+        "VueJS",
+        "ASP.NET",
+        "AngularJS",
+        "React.js",
+        "HTML/CSS",
+        "Node.js",
+        "MVC",
+        "Linq",
+        "T-SQL",
+        "WCF",
+        "OOP",
+        "asynchronous programming"
+      ]
+    },
+    {
+      "Title": "Database and Data Analysis",
+      "Items": ["SQL", "MySQL", "MongoDB", "RDBMS", "Entity Framework"]
+    },
+    {
+      "Title": "Development Tools and Technologies",
+      "Items": ["Git", "Bootstrap"]
+    },
+    {
+      "Title": "APIs and Web Services",
+      "Items": ["REST APIs", "WebServices"]
+    },
+    {
+      "Title": "Business Intelligence and Data Visualization",
+      "Items": ["Power BI", "IBM Cognos", "SSIS", "SSRS"]
+    },
+    {
+      "Title": "Cloud Platforms and Services",
+      "Items": ["Microsoft Azure", "CI/CD"]
+    },
+    {
+      "Title": "Microservices and Architecture",
+      "Items": ["Microservices", "API architecture"]
+    },
+    {
+      "Title": "Testing",
+      "Items": ["Unit Tests", "Automated Tests"]
+    },
+    {
+      "Title": "Others",
+      "Items": ["JSON", "Full Stack", "Supabase"]
+    }
+  ]
+}
