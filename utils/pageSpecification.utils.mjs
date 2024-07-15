@@ -6,7 +6,7 @@ class PageSpecifications {
     left: 450.51,
   };
 
-  font = "Calibri";
+  font = "Arial";
 
   fontSize = {
     minContentSize: 8,
@@ -18,8 +18,8 @@ class PageSpecifications {
   };
 
   tableColumnWidth = {
-    left: 60,
-    right: 40,
+    left: 70,
+    right: 30,
   };
 
   lineSpacing = 1000;

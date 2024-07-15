@@ -1,4 +1,5 @@
 import * as fs from "fs";
+
 import {
   Document,
   Packer,
@@ -16,8 +17,8 @@ import {
 } from "docx";
 import PageSpecifications from "../utils/pageSpecification.utils.mjs";
 import path from 'path';
-import unoconv from 'awesome-unoconv';
 import { PDFDocument } from 'pdf-lib';
+import unoconv from 'awesome-unoconv';
 
 const fileName = "./output/Samirasimha_Resume.docx";
 const fileNamePdf = "./output/Samirasimha_Resume.pdf";
@@ -27,26 +28,14 @@ let fontSizeMultipler = 1.0;
 const InitProduction = async () => {
   await CreateFiles(); // Ensure that file creation is complete before proceeding
 
+  let pageCount = await countPages();
 
-  // let pageCount = await countPages();
-
-  // while (pageCount > 1) {
-  //   console.log("Inside Loop");
-  //   fontSizeMultiplier -= 0.05; // Assuming this impacts the CreateFiles() or countPages() somehow
-
-  //   if (fontSizeMultipler <= 0.1) {
-  //     console.error("Font size multiplier too small. Exiting loop.");
-  //     break;
-  //   }
-
-  //   await CreateFiles(); // Wait for this operation to complete before the next iteration
-
-  //   pageCount = await countPages();
-
-  //   if (pageCount === null) {
-  //     break;
-  //   }
-  // }
+  while(pageCount > 1){
+    console.log("Inside While Loop");
+    fontSizeMultipler -= 0.05;
+    await CreateFiles();
+    pageCount = countPages();
+  }
 
   return true;
 }
@@ -65,7 +54,7 @@ const CreateFiles = async () => {
   const doc = new Document(document);
 
   // Used to export the file into a .docx file
-  Packer.toBuffer(doc)
+  await Packer.toBuffer(doc)
   .then((buffer) => {
     if (fs.existsSync(fileName)) {
       fs.unlinkSync(fileName); // Delete the file if it exists
@@ -76,14 +65,10 @@ const CreateFiles = async () => {
     fs.writeFileSync(fileName, buffer);
     // return fileName;
   })
-  .then(() => {
-     ExportToPdf(fileName);
-  })
-  .then((result)=> {
-    // if(result)
-      // countPages();
-  })
-  ;
+  .then(async () => {
+    console.time('convertDocxToPdf');
+      await ExportToPdf(fileName);
+  });
 
   return true;
 };
@@ -440,23 +425,22 @@ async function countPages() {
 }
 
 
-const ExportToPdf = (docxPath) => {
+const ExportToPdf = async (docxPath) => {
 
   const sourceFilePath = path.resolve(docxPath);
   const outputFilePath = path.resolve(fileNamePdf);
-   console.log("It's here")
-  unoconv
+  await unoconv
     .convert(sourceFilePath, outputFilePath)
     .then(result => {
       console.log(result); // return outputFilePath
       return true;
     })
     .catch(err => {
-      console.log(err);
+      return true;
     });
-  
-    
+      
   }
+
 
 export default {
   CreateFiles,
