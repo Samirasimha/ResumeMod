@@ -22,7 +22,7 @@ import unoconv from 'awesome-unoconv';
 import { json } from "express";
 import RegexSpecs from "../utils/regex.utils.mjs";
 
-
+const source = "./data/MyResume.json";
 const outputDir = "./output/"
 
 let fileName = "";
@@ -34,9 +34,17 @@ const InitProduction = async () => {
   let pageCount = 2;
   while (pageCount > 1) {
 
-    await CreateFiles();
+    const fileCreated = await CreateFiles();
+    if (!fileCreated) {
+        console.error("File creation failed, exiting loop.");
+        break;
+    }
 
     pageCount = await countPages();
+    if (pageCount === null) {
+        console.error("Error counting pages, exiting loop.");
+        break;
+    }
 
     fontSizeMultipler -= 0.05;
     console.log("Number of pages Exceeded.. Regenerating File.");
@@ -51,7 +59,7 @@ const CreateFiles = async () => {
   try {
     let document = CreateDocumentWithMetadata();
 
-    var data = JSON.parse(fs.readFileSync("./data/MyResume_Django.json"));
+    var data = JSON.parse(fs.readFileSync(source));
 
     await SetFileName(data);
 
@@ -498,7 +506,6 @@ const CreateDocumentWithMetadata = () => {
   };
 };
 
-
 const createSpacer = () => {
   return new Paragraph({
     children: [
@@ -539,10 +546,6 @@ async function countPages() {
     return null;  // Return null in case of error
   }
 }
-
-
-
-
 
 const ExportToPdf = async () => {
 
