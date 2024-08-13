@@ -10,11 +10,11 @@ class PageSpecifications {
 
   fontSize = {
     minContentSize: 8,
-    maxContentSize: 10,
+    maxContentSize: 11,
     minTitleSize: 9,
-    maxTitleSize: 10.5,
-    contactInfoSize: 8,
-    userNameSize: 12,
+    maxTitleSize: 11.5,
+    contactInfoSize: 8.5,
+    userNameSize: 14,
   };
 
   tableColumnWidth = {

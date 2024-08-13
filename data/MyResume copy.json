@@ -4,8 +4,13 @@
   "Email": "samirasimha.r@gmail.com",
   "Links": [
     {
-      "Title": "www.linkedin.com/in/samirasimha",
-      "Url": "www.linkedin.com/in/samirasimha"
+      "Title": "linkedin.com/in/samirasimha",
+      "Url": "linkedin.com/in/samirasimha"
+    }
+,
+    {
+      "Title": "github.com/Samirasimha",
+      "Url": "github.com/Samirasimha"
     }
   ],
   "Sections": [
@@ -33,7 +38,7 @@
           "description": [
             {
               "subTitle": "",
-              "text": "Refactored module-level code into Micro Services with a plug-in approach using .NET Core cutting future development time by 50% which further reduced legacy REST API response times by 80%"
+              "text": "Refactored module-level code into **[Micro Services]** with a plug-in approach using .NET Core cutting future development time by 50% which further reduced legacy REST API response times by 80%"
             },
             {
               "subTitle": "",
