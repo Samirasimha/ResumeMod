@@ -11,10 +11,11 @@
   "dependencies": {
     "awesome-unoconv": "^1.0.1",
     "docx": "^8.5.0",
+    "docx-pdf-pagecount": "^0.0.3",
     "express": "^4.18.2",
+    "graceful-fs": "^4.2.11",
     "nodemon": "^3.1.4",
     "openai": "^4.26.0",
-    "page-count": "^0.0.4",
     "pdf-lib": "^1.17.1"
   }
 }

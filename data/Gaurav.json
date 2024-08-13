@@ -1,0 +1,167 @@
+{
+    "Name": "Gaurav Setty",
+    "Phone": "+1 260-977-0744",
+    "Email": "gaurav.mg.setty@gmail.com",
+    "Links": [
+      {
+        "Title": "LinkedIn",
+        "Url": "http://www.linkedin.com/in/gaurav-setty-362b9318a"
+      },
+      {
+        "Title": "GitHub",
+        "Url": "https://github.com/Gauravmg6"
+      }
+    ],
+    "Sections": [
+      {
+        "Title": "Education",
+        "Content": [
+          {
+            "row1": ["Purdue University", "August 2022 – May 2024"],
+            "row2": ["Master’s – Computer Science", "CGPA – 3.89/4"]
+          },
+          {
+            "row1": ["Visvesvaraya Technological University", "August 2015 – June 2019"],
+            "row2": ["Bachelor’s – Computer Engineering"]
+          }
+        ]
+      },
+      {
+        "Title": "Skills",
+        "Content": [
+          {
+            "row1": [],
+            "row2": [],
+            "description": [
+              {
+                "subTitle": "Programming Languages",
+                "text": "Python, JavaScript, Typescript, C#, Java, C, C++, Embedded C"
+              },
+              {
+                "subTitle": "Web Technologies",
+                "text": "ReactJS, NextJS, Vue, Angular, NodeJS, .NET, ASP.NET, jQuery, Springboot, Django, HTML5, CSS, MongoDB, SQL, NoSQL, GraphQL, RESTful API, Web services, PostgreSQL, Figma"
+              },
+              {
+                "subTitle": "Software, CI/CD & OS",
+                "text": "GIT, MySQL, Oracle DB, Google Colab, Jira, Azure, AWS, Agile, Microsoft IIS Manager, Kubernetes, Jenkins, Windows, Linux"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Title": "Experience",
+        "Content": [
+          {
+            "row1": ["Purdue University – Helmke Library", "January 2023 – May 2024"],
+            "row2": ["Software Developer"],
+            "description": [
+              {
+                "subTitle": "",
+                "text": "Crafted a comprehensive system to digitize and optimize access to the Purdue University Fort Wayne (PFW) archives finding aids."
+              },
+              {
+                "subTitle": "",
+                "text": "Developed the Finding-Aid app using React (Front-end), .NET core (Back-end), and MySQL technologies to ensure data integrity and accessibility, resulting in a 20% reduction in data retrieval time."
+              },
+              {
+                "subTitle": "",
+                "text": "Implemented Angular 14 (Frontend), .NET core (Backend), and MySQL technologies to develop the user interface and experience for the PFW Encyclopedia."
+              },
+              {
+                "subTitle": "",
+                "text": "Incorporated server-side rendering for enhanced performance and user experience, increasing monthly user engagement by 40% and reducing search query processing time by 25%."
+              },
+              {
+                "subTitle": "",
+                "text": "Orchestrated cross-functional team collaboration for seamless project integration and successful delivery."
+              }
+            ]
+          },
+          {
+            "row1": ["Infosys Ltd", "January 2020 – July 2022"],
+            "row2": ["Sr. Software Engineer"],
+            "description": [
+              {
+                "subTitle": "",
+                "text": "Orchestrated the creation of a MERN Stack-based ticketing application for Daimler, empowering employees to create and track support tickets, leading to a 17% optimization in issue-resolution processes."
+              },
+              {
+                "subTitle": "",
+                "text": "Designed and developed a high-impact web application for Nike, focusing on ReactJS and Redux, resulting in a 28% UI efficiency and operational streamlining improvement."
+              },
+              {
+                "subTitle": "",
+                "text": "Showcased team management by leading and mentoring a team of junior developers, resulting in a 50% improvement in user retention and an 11% reduction in app crashes, leveraging microservices architecture."
+              },
+              {
+                "subTitle": "",
+                "text": "Demonstrated strong troubleshooting abilities and delivered superior customer service, achieving a 95% client satisfaction rate."
+              }
+            ]
+          },
+          {
+            "row1": ["Knowx Innovation Pvt Ltd", "January 2019 – February 2019"],
+            "row2": ["Software Engineer Intern"],
+            "description": [
+              {
+                "subTitle": "",
+                "text": "Completed a Full Stack application development internship, creating an IoT-powered security system for prison monitoring."
+              },
+              {
+                "subTitle": "",
+                "text": "Designed a robust prison management mobile application using MERN stack for raising alerts and maintaining safety records of prisoners, contributing to around a 30% increase in overall operational efficiency."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Title": "Projects",
+        "Content": [
+          {
+            "row1": ["OneStop - Expert Professional Services at Home" ],
+            "SingleColumnTable": ["NodeJS, ExpressJS, React, Redux, MongoDB, Prime React, Material UI, CSS, Cypress"],
+            "description": [
+              {
+                "subTitle": "",
+                "text": "OneStop enables household management with intuitive design and seamless navigation, offering 20% better state management."
+              },
+              {
+                "subTitle": "",
+                "text": "Unique features include personalized service scheduling, real-time tracking, and a curated marketplace."
+              }
+            ]
+          },
+          {
+            "row1": ["Covid-19 Supplies"],
+            "SingleColumnTable": [ "Python, React, Django, SQLite 3, HTML, CSS, API"],
+            "description": [
+              {
+                "subTitle": "",
+                "text": "Developed a comprehensive medical supply monitoring tool to track the availability of 30 crucial COVID-19 resources."
+              },
+              {
+                "subTitle": "",
+                "text": "Implemented a web application for store owners to manage accounts and supplies, reducing manual data entry time by 75%."
+              }
+            ]
+          },
+          {
+            "row1": ["Hoopla - Innovative E-Commerce Platform"],
+            "SingleColumnTable": ["Node.js, Express.js, React, MongoDB, Material UI, CSS, Jasmine"],
+            "description": [
+              {
+                "subTitle": "",
+                "text": "Designed an Amazon-inspired online shopping app, an innovative, secure, and stylish one-click destination."
+              },
+              {
+                "subTitle": "",
+                "text": "Optimized performance resulting in around a 50% reduction in page load time."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

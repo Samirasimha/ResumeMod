@@ -19,22 +19,27 @@ import PageSpecifications from "../utils/pageSpecification.utils.mjs";
 import path from 'path';
 import { PDFDocument } from 'pdf-lib';
 import unoconv from 'awesome-unoconv';
+import { json } from "express";
+import RegexSpecs from "../utils/regex.utils.mjs";
 
-const fileName = "./output/Samirasimha_Resume.docx";
-const fileNamePdf = "./output/Samirasimha_Resume.pdf";
+
+const outputDir = "./output/"
+
+let fileName = "";
 
 let fontSizeMultipler = 1.0;
 
 const InitProduction = async () => {
-  await CreateFiles(); // Ensure that file creation is complete before proceeding
 
-  let pageCount = await countPages();
+  let pageCount = 2;
+  while (pageCount > 1) {
 
-  while(pageCount > 1){
-    console.log("Inside While Loop");
-    fontSizeMultipler -= 0.05;
     await CreateFiles();
-    pageCount = countPages();
+
+    pageCount = await countPages();
+
+    fontSizeMultipler -= 0.05;
+    console.log("Number of pages Exceeded.. Regenerating File.");
   }
 
   return true;
@@ -43,43 +48,62 @@ const InitProduction = async () => {
 // Documents contain sections, you can have multiple sections per document, go here to learn more about sections
 // This simple example will only contain one section
 const CreateFiles = async () => {
-  let document = CreateDocumentWithMetadata();
+  try {
+    let document = CreateDocumentWithMetadata();
 
-  var data = JSON.parse(fs.readFileSync("./data/MyResume.json"));
+    var data = JSON.parse(fs.readFileSync("./data/MyResume_Django.json"));
 
-  document = CreateHeader(data, document);
+    await SetFileName(data);
 
-  document = GenerateAllSections(data, document);
+    document = CreateHeader(data, document);
 
-  const doc = new Document(document);
+    document = GenerateAllSections(data, document);
 
-  // Used to export the file into a .docx file
-  await Packer.toBuffer(doc)
-  .then((buffer) => {
-    if (fs.existsSync(fileName)) {
-      fs.unlinkSync(fileName); // Delete the file if it exists
-    }
-    if (fs.existsSync(fileNamePdf)) {
-      fs.unlinkSync(fileNamePdf); // Delete the file if it exists
-    }
-    fs.writeFileSync(fileName, buffer);
-    // return fileName;
-  })
-  .then(async () => {
-    console.time('convertDocxToPdf');
-      await ExportToPdf(fileName);
-  });
+    const doc = new Document(document);
 
-  return true;
+    // Used to export the file into a .docx file
+    await Packer.toBuffer(doc)
+      .then((buffer) => {
+        if (fs.existsSync(getDocxFileName())) {
+          fs.unlinkSync(getDocxFileName()); // Delete the file if it exists
+        }
+        if (fs.existsSync(getPdfFileName())) {
+          fs.unlinkSync(getPdfFileName()); // Delete the file if it exists
+        }
+        fs.writeFileSync(getDocxFileName(), buffer);
+      })
+      .then(async () => {
+        await ExportToPdf(getDocxFileName());
+      });
+
+    return true;
+  }
+  catch (error) {
+    console.log(error);
+    return true;
+  }
 };
+
+const SetFileName = (jsonData) => {
+  console.log(jsonData.Name);
+  fileName = jsonData.Name.replace(/ /g, "_");
+}
+
+const getDocxFileName = () => {
+  return outputDir + fileName + ".docx";
+}
+
+const getPdfFileName = () => {
+  return outputDir + fileName + ".pdf";
+}
 
 const GenerateAllSections = (data, document) => {
   data.Sections.forEach((item) => {
-    //Create the Section Header
 
+    //Create the Section Header
     const sectionHeader = new Paragraph({
       children: [
-        new TextRun({
+        newTextRun({
           text: item.Title.toUpperCase(),
           size: TextSizeMultipler(PageSpecifications.fontSize.maxTitleSize),
           bold: true,
@@ -108,18 +132,32 @@ const GenerateAllSections = (data, document) => {
       let dataTable = CreateTableWithMetadata();
 
       let hasTable = false;
-      if (section.row1.length > 0) {
+      if (section.row1?.length > 0) {
         dataTable.rows.push(GenerateNewRow(section.row1, 1));
         hasTable = true;
       }
 
-      if (section.row2.length > 0) {
+      if (section.row2?.length > 0) {
         dataTable.rows.push(GenerateNewRow(section.row2, 2));
         hasTable = true;
       }
 
       if (hasTable) {
         document.sections[0].children.push(new Table(dataTable));
+      }
+
+      //If Single Row Tables Exist. Add it here. 
+
+      if (section.SingleColumnTable && section.SingleColumnTable.length > 0){
+
+        let singleColumnDataTable = CreateTableWithMetadata();
+
+        section.SingleColumnTable.forEach((item) => {
+          singleColumnDataTable.rows.push(GenerateNewRow(item, 2,true))
+        });
+
+        document.sections[0].children.push(new Table(singleColumnDataTable));
+
       }
 
       if (section.description) {
@@ -133,7 +171,7 @@ const GenerateAllSections = (data, document) => {
           };
           if (textDesc?.subTitle) {
             newPoint.children.push(
-              new TextRun({
+              newTextRun({
                 text: textDesc.subTitle + ": ",
                 size: TextSizeMultipler(
                   PageSpecifications.fontSize.maxContentSize
@@ -144,7 +182,7 @@ const GenerateAllSections = (data, document) => {
           }
           if (textDesc?.text) {
             newPoint.children.push(
-              new TextRun({
+              newTextRun({
                 text: textDesc.text,
                 size: TextSizeMultipler(
                   PageSpecifications.fontSize.maxContentSize
@@ -162,53 +200,131 @@ const GenerateAllSections = (data, document) => {
   return document;
 };
 
-const GenerateNewRow = (row, rowNum) => {
-  return new TableRow({
-    children: [
-      new TableCell({
-        width: {
-          size: PageSpecifications.tableColumnWidth.left,
-          type: WidthType.PERCENTAGE,
-        },
-        children: [
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: row[0],
-                size: TextSizeMultipler(
-                  PageSpecifications.fontSize.maxContentSize
-                ),
-                bold: rowNum == 1,
-                italics: rowNum == 2,
-              }),
-            ],
-            alignment: AlignmentType.LEFT,
-          }),
-        ],
-      }),
-      new TableCell({
-        width: {
-          size: PageSpecifications.tableColumnWidth.right,
-          type: WidthType.PERCENTAGE,
-        },
-        children: [
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: row[1],
-                size: TextSizeMultipler(
-                  PageSpecifications.fontSize.maxContentSize
-                ),
-                bold: rowNum == 1,
-                italics: true,
-              }),
-            ],
-            alignment: AlignmentType.RIGHT,
-          }),
-        ],
-      }),
-    ],
-  });
+const GenerateNewRow = (row, rowNum, singleColumn = false) => {
+
+
+  if (singleColumn){
+    return new TableRow({
+      children: [
+        new TableCell({
+          width: {
+            size: 100,
+            type: WidthType.PERCENTAGE,
+          },
+          children: [
+            new Paragraph({
+              children: [
+                newTextRun({
+                  text: row,
+                  size: TextSizeMultipler(
+                    PageSpecifications.fontSize.maxContentSize
+                  ),
+                  bold: rowNum == 1,
+                  italics: rowNum == 2,
+                }),
+              ],
+              alignment: AlignmentType.LEFT,
+            }),
+          ],
+        })
+      ],
+    });
+  }
+  else if (row.length > 2) {
+
+    return new TableRow({
+      children: [
+        new TableCell({
+          children: [
+            new Paragraph({
+              children: [
+                newTextRun({
+                  text: row[0],
+                  size: TextSizeMultipler(
+                    PageSpecifications.fontSize.maxContentSize
+                  ),
+                  bold: true,
+                }),
+                AddContactInfoData(" | ",null,false,true),
+                newTextRun({
+                  text: row[1],
+                  size: TextSizeMultipler(
+                    PageSpecifications.fontSize.maxContentSize
+                  ),
+                  italics: true,
+                })
+              ],
+              alignment: AlignmentType.LEFT,
+            }),
+          ],
+        }),
+        new TableCell({
+          children: [
+            new Paragraph({
+              children: [
+                newTextRun({
+                  text: row[2],
+                  size: TextSizeMultipler(
+                    PageSpecifications.fontSize.maxContentSize
+                  ),
+                  bold: true
+                }),
+              ],
+              alignment: AlignmentType.RIGHT,
+            }),
+          ],
+        }),
+      ],
+    });
+  }
+  else {
+    return new TableRow({
+      children: [
+        new TableCell({
+          width: {
+            size: PageSpecifications.tableColumnWidth.left,
+            type: WidthType.PERCENTAGE,
+          },
+          children: [
+            new Paragraph({
+              children: [
+                newTextRun({
+                  text: row[0],
+                  size: TextSizeMultipler(
+                    PageSpecifications.fontSize.maxContentSize
+                  ),
+                  bold: rowNum == 1,
+                  italics: rowNum == 2,
+                }),
+              ],
+              alignment: AlignmentType.LEFT,
+            }),
+          ],
+        }),
+        new TableCell({
+          width: {
+            size: PageSpecifications.tableColumnWidth.right,
+            type: WidthType.PERCENTAGE,
+          },
+          children: [
+            new Paragraph({
+              children: [
+                newTextRun({
+                  text: row[1],
+                  size: TextSizeMultipler(
+                    PageSpecifications.fontSize.maxContentSize
+                  ),
+                  bold: rowNum == 1,
+                  italics: true,
+                }),
+              ],
+              alignment: AlignmentType.RIGHT,
+            }),
+          ],
+        }),
+      ],
+    });
+  }
 };
 
 const CreateTableWithMetadata = () => {
@@ -233,7 +349,7 @@ const CreateTableWithMetadata = () => {
 const CreateHeader = (data, document) => {
   const nameParagraph = new Paragraph({
     children: [
-      new TextRun({
+      newTextRun({
         text: data.Name.toUpperCase(),
         size: TextSizeMultipler(PageSpecifications.fontSize.userNameSize),
       }),
@@ -272,13 +388,13 @@ const TextSizeMultipler = (size, multiplyBy = 2) => {
   return size * multiplyBy * fontSizeMultipler;
 };
 
-const AddContactInfoData = (info, hyperLink = null, isEmail = false) => {
+const AddContactInfoData = (info, hyperLink = null, isEmail = false, isSizeMax = false) => {
   if (hyperLink) {
     return new ExternalHyperlink({
       children: [
-        new TextRun({
+        newTextRun({
           text: info,
-          size: TextSizeMultipler(PageSpecifications.fontSize.contactInfoSize),
+          size: TextSizeMultipler(isSizeMax ? PageSpecifications.fontSize.maxContentSize : PageSpecifications.fontSize.contactInfoSize),
           style: "Hyperlink",
         }),
       ],
@@ -286,9 +402,9 @@ const AddContactInfoData = (info, hyperLink = null, isEmail = false) => {
     });
   }
 
-  return new TextRun({
+  return newTextRun({
     text: info,
-    size: TextSizeMultipler(PageSpecifications.fontSize.contactInfoSize),
+    size: TextSizeMultipler(isSizeMax ? PageSpecifications.fontSize.maxContentSize : PageSpecifications.fontSize.contactInfoSize),
   });
 };
 
@@ -307,8 +423,8 @@ const CreateDocumentWithMetadata = () => {
               style: {
                 paragraph: {
                   indent: {
-                    left: convertInchesToTwip(0.5),
-                    hanging: convertInchesToTwip(0.25),
+                    left: convertInchesToTwip(0.2),
+                    hanging: convertInchesToTwip(0.1),
                   },
                 },
               },
@@ -386,8 +502,8 @@ const CreateDocumentWithMetadata = () => {
 const createSpacer = () => {
   return new Paragraph({
     children: [
-      new TextRun({
-        text: "", 
+      newTextRun({
+        text: "",
       }),
     ],
     spacing: {
@@ -399,7 +515,7 @@ const createSpacer = () => {
 const createContentSpacer = () => {
   return new Paragraph({
     children: [
-      new TextRun({
+      newTextRun({
         text: " ", // Adding a space character
       }),
     ],
@@ -413,22 +529,25 @@ const createContentSpacer = () => {
 
 async function countPages() {
   try {
-      const fileBuffer = fs.readFileSync(fileNamePdf);
-      const pdfDoc = await PDFDocument.load(fileBuffer);
-      const number = pdfDoc.getPageCount();
-      console.log(number);
-      return number;
+    const fileBuffer = fs.readFileSync(getPdfFileName());
+    const pdfDoc = await PDFDocument.load(fileBuffer);
+    const number = pdfDoc.getPageCount();
+    console.log("Number of Pages : " + number);
+    return number;
   } catch (error) {
-      console.error("Error reading the PDF:", error);
-      return null;  // Return null in case of error
+    console.error("Error reading the PDF:", error);
+    return null;  // Return null in case of error
   }
 }
 
 
-const ExportToPdf = async (docxPath) => {
 
-  const sourceFilePath = path.resolve(docxPath);
-  const outputFilePath = path.resolve(fileNamePdf);
+
+
+const ExportToPdf = async () => {
+
+  const sourceFilePath = path.resolve(getDocxFileName());
+  const outputFilePath = path.resolve(getPdfFileName());
   await unoconv
     .convert(sourceFilePath, outputFilePath)
     .then(result => {
@@ -438,9 +557,13 @@ const ExportToPdf = async (docxPath) => {
     .catch(err => {
       return true;
     });
-      
-  }
 
+}
+
+const newTextRun = (params) => {
+  params.font = PageSpecifications.font;
+  return new TextRun(params);
+}
 
 export default {
   CreateFiles,

@@ -1,0 +1,154 @@
+{
+    "Name": "Samirasimha Rajasimha",
+    "Phone": "(260)-905-9637",
+    "Email": "samirasimha.26@gmail.com",
+    "Links": [
+      {
+        "Title": "linkedin.com/in/samirasimha",
+        "Url": "linkedin.com/in/samirasimha"
+      },
+      {
+        "Title": "github.com/Samirasimha",
+        "Url": "github.com/Samirasimha"
+      }
+    ],
+    "Sections": [
+      {
+        "Title": "Skills",
+        "Content": [
+          {
+            "description": [
+              {
+                "subTitle": "Languages",
+                "text": "Python, JavaScript, C#, HTML/CSS, SQL"
+              },
+              {
+                "subTitle": "Technologies and Frameworks",
+                "text": ".NET Framework, **[.NET Core]**, Django, AngularJS, ReactJS, Vue.js, Node.js"
+              },
+              {
+                "subTitle": "Databases",
+                "text": "MySQL, SQL Server, MongoDB, PostgreSQL, Redis"
+              },
+              {
+                "subTitle": "Other Skills",
+                "text": "Azure, CI/CD, Microservices, REST APIs, Microsoft Cognitive Services, Power BI"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Title": "Experience",
+        "Content": [
+          {
+            "row1": ["Gravity iLabs", "January 2019 – July 2022"],
+            "row2": ["Software Engineer – Full Stack", "Bengaluru, Karnataka, India"],
+            "description": [
+              {
+                "text": "Reduced development time by 80 man-hours per week by writing reusable libraries and refactoring code into microservices using .NET Core, achieving an 80% reduction in API response times."
+              },
+              {
+                "text": "Improved admin level role management and reduced development times by 80% with role-based access management systems."
+              },
+              {
+                "text": "Reduced development time by 40 man-hours per week and maintenance time by 30% by componentizing UI elements in AngularJS."
+              },
+              {
+                "text": "Cut QA testing times by 25% through implementing Jasmine for front-end unit testing."
+              },
+              {
+                "text": "Accelerated release cycles by 50% and enhanced deployment reliability by implementing an Azure DevOps CI/CD pipeline."
+              },
+              {
+                "text": "Improved application performance by 40% and reduced database load with a caching mechanism using Azure Functions and Redis Cache."
+              }
+            ]
+          },
+          {
+            "row1": ["Infosys Ltd", "August 2018 – December 2018"],
+            "row2": ["Systems Engineer", "Mysuru, Karnataka, India"],
+            "description": [
+              {
+                "text": "Achieved a 40% improvement in transaction efficiency and a 30% reduction in client transaction times by developing a full-stack financial analysis tool using Django and Angular."
+              },
+              {
+                "text": "Reduced data breach risks by 50% by creating a secure RESTful API using Django with OAuth2 and JWT."
+              },
+              {
+                "text": "Cut operational costs by $40,000 by optimizing resource allocation strategies using Django."
+              }
+            ]
+          },
+          {
+            "row1": ["Gravity iLabs", "July 2017 – August 2017"],
+            "row2": ["Software Development Intern", "Bengaluru, Karnataka, India"],
+            "description": [
+              {
+                "text": "Streamlined Portfolio Budget Statements management with a full-stack application using Django and Angular, automating processes and enhancing functionality."
+              },
+              {
+                "text": "Boosted stakeholder engagement and saved 70 man-hours weekly by automating email communications with Django’s SMTP capabilities."
+              },
+              {
+                "text": "Achieved 95%+ accuracy in sentiment classification by integrating Microsoft Cognitive Services, optimizing communication strategies."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Title": "Education",
+        "Content": [
+          {
+            "row1": ["Purdue University", "MS, Computer Science", "May 2024"],
+            "row2": [],
+            "description": []
+          },
+          {
+            "row1": ["Visvesvaraya Technological University", "BE, Computer Science", "May 2018"],
+            "row2": [],
+            "description": []
+          }
+        ]
+      },
+      {
+        "Title": "Projects",
+        "Content": [
+          {
+            "row1": ["Special Events – Calendar Generation", "December 2023 – February 2024"],
+            "row2": ["Purdue University", "Indiana, USA"],
+            "description": [
+              {
+                "text": "Enhanced event management efficiency by developing a Django and Vue.js application to automatically generate iCal files from Excel, streamlining event scheduling."
+              },
+              {
+                "text": "Implemented a JSON-based metadata system to enhance scalability and maintainability, enabling swift adaptation to evolving Excel structures or deployment across varied organizational contexts."
+              }
+            ]
+          },
+          {
+            "row1": ["Note Nirvana (Web App for Guitar Chords)", "August 2023 – December 2023"],
+            "row2": ["Purdue University", "Indiana, USA"],
+            "description": [
+              {
+                "text": "Increased user satisfaction by 60% by creating a music tablature tool with Django and React, featuring auto-scroll and chord adjustments."
+              },
+              {
+                "text": "Implemented secure metadata storage and contributed to both frontend and backend, ensuring comprehensive project involvement and technology integration."
+              }
+            ]
+          },
+          {
+            "row1": ["Furniture App Based on Augmented Reality", "January 2018 – October 2018"],
+            "row2": ["Visvesvaraya Technological University", "Bengaluru, Karnataka, India"],
+            "description": [
+              {
+                "text": "Developed an AR-based Android app using C# and the Kudan SDK for furniture stores, presented at the 2018 ICACCI IEEE Bengaluru."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
