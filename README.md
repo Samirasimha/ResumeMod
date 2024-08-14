@@ -201,11 +201,8 @@ The JSON file should follow this structure:
 
 ### Fonts and Text Sizes
 
-The tool allows customization of fonts, text sizes, and other layout parameters. Modify these settings in the `PageSpecifications` object in the `pageSpecification.utils.mjs` file.
+The tool allows customization of fonts, text sizes, and other layout parameters. Modify these settings in the `DocumentConfig` object in the `documentConfig.utils.mjs` file.
 
-### Templates
-
-You can create and use your templates by modifying the sections generation logic in the `GenerateAllSections` function within the `enhanced_docxCreationService.mjs` file.
 
 ### Section Arrangement
 
