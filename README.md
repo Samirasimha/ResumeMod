@@ -199,6 +199,10 @@ You can create and use your templates by modifying the sections generation logic
 
 The order of sections in the resume can be rearranged by modifying the order of the sections in the JSON file. The sections will appear in the final resume in the order they are listed in the Sections array.
 
+### Adding additional Sections
+
+You can easily add new sections to your resume by adding a new object to the Sections array in the JSON file. Simply specify the title of the new section and add its content. The new section will appear in the output resume in the order you place it in the Sections array.
+
 ## Error Handling
 
 The application includes error handling to manage file creation and conversion processes. In case of an error, appropriate messages will be logged, and the process will attempt to continue where possible.
