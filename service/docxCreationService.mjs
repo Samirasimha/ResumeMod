@@ -1,21 +1,8 @@
 import * as fs from "fs";
 
 import {
-  Document,
-  Packer,
-  Paragraph,
-  TextRun,
-  AlignmentType,
-  ExternalHyperlink,
-  BorderStyle,
-  TableCell,
-  Table,
-  TableRow,
-  WidthType,
-  LevelFormat,
-  convertInchesToTwip,
+  Packer
 } from "docx";
-import PageSpecifications from "../utils/pageSpecification.utils.mjs";
 import path from 'path';
 import { PDFDocument } from 'pdf-lib';
 import unoconv from 'awesome-unoconv';
