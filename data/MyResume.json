@@ -1,155 +1,116 @@
 {
-  "Name": "Samirasimha Rajasimha",
-  "Phone": "(260)-905-9637",
-  "Email": "samirasimha.26@gmail.com",
-  "Links": [
-    {
-      "Title": "linkedin.com/in/samirasimha",
-      "Url": "linkedin.com/in/samirasimha"
-    },
-    {
-      "Title": "github.com/Samirasimha",
-      "Url": "github.com/Samirasimha"
-    }
-  ],
-  "Sections": [
-    {
-      "Title": "Skills",
-      "Content": [
-        {
-          "description": [
-            {
-              "subTitle": "Languages",
-              "text": "C#, HTML/CSS, JavaScript, Python, SQL, Java"
-            },
-            {
-              "subTitle": "Technologies and Frameworks",
-              "text": ".NET Framework, .NET Core, Node.js, ExpressJS, AngularJS, ReactJS, Django, SpringBoot"
-            },
-            {
-              "subTitle": "Databases",
-              "text": "MySQL, SQL Server, MongoDB, PostgreSQL, Redis"
-            },
-            {
-              "subTitle": "Other Skills",
-              "text": "Azure, CI/CD, Microservices, REST APIs, Microsoft Cognitive Services, Power BI"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Title": "Experience",
-      "Content": [
-        {
-          "row1": ["Gravity iLabs", "January 2019 – July 2022"],
-          "row2": ["Software Engineer – Full Stack", "Bengaluru, Karnataka, India"],
-          "description": [
-            {
-              "text": "Reduced development time by 80 man-hours per week by writing reusable libraries and refactoring code into microservices using .NET Core, achieving an 80% reduction in API response times."
-            },
-            {
-              "text": "Improved admin level role management and reduced development times by 80% with role-based access management systems."
-            },
-            {
-              "text": "Reduced development time by 40 man-hours per week and maintenance time by 30% by componentizing UI elements in AngularJS."
-            },
-            {
-              "text": "Cut QA testing times by 25% through implementing Jasmine for front-end unit testing"
-            },
-            {
-              "text": "Accelerated release cycles by 50% and enhanced deployment reliability by implementing an Azure DevOps CI/CD pipeline."
-            },
-            {
-              "text": "Improved application performance by 40% and reduced database load with a caching mechanism using Azure Functions and Redis Cache."
-            }
-          ]
-        },
-        {
-          "row1": ["Infosys Ltd", "August 2018 – December 2018"],
-          "row2": ["Systems Engineer", "Mysuru, Karnataka, India"],
-          "description": [
-            {
-              "text": "Achieved a 40% improvement in transaction efficiency and a 30% reduction in client transaction times by developing a full-stack financial analysis tool using .NET and Angular."
-            },
-            {
-              "text": "Reduced data breach risks by 50% by creating a secure RESTful API using .NET with OAuth2 and JWT."
-            },
-            {
-              "text": "Cut operational costs by $40,000 by optimizing resource allocation strategies using .NET."
-            }
-          ]
-        },
-        {
-          "row1": ["Gravity iLabs", "July 2017 – August 2017"],
-          "row2": ["Software Development Intern", "Bengaluru, Karnataka, India"],
-          "description": [
-            {
-              "text": "Streamlined Portfolio Budget Statements management with a full-stack application using .NET Core and Angular, automating processes and enhancing functionality."
-            },
-            {
-              "text": "Boosted stakeholder engagement and saved 70 man-hours weekly by automating email communications with .NET Core’s SMTP capabilities."
-            },
-            {
-              "text": "Achieved 95%+ accuracy in sentiment classification by integrating Microsoft Cognitive Services, optimizing communication strategies."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Title": "Education",
-      "Content": [
-        {
-          "row1": ["Purdue University", "MS, Computer Science", "May 2024"],
-          "row2": [],
-          "description": []
-        },
-        {
-          "row1": ["Visvesvaraya Technological University", "BE, Computer Science", "May 2018"],
-          "row2": [],
-          "description": []
-        }
-      ]
-    },
-    {
-      "Title": "Projects",
-      "Content": [
-        {
-          "row1": ["Weight Lifting Tracker", "January 2024 – May 2024"],
-          "row2": ["Purdue University", "Indiana, USA"],
-          "description": [
-            {
-              "text": "Developed a comprehensive web application using Spring Boot and React, allowing users to log and monitor their weight lifting workouts with ease. Utilized MySQL for database management and Hibernate for ORM."
-            },
-            {
-              "text": "Implemented secure user authentication with Spring Security and JWT, and developed interactive progress charts using Chart.js. Utilized RabbitMQ for notifications and reminders, and deployed the application on AWS using Docker for scalability and high availability."
-            }
-          ]
-        }
-        ,
-        {
-          "row1": ["Note Nirvana (Web App for Guitar Chords)", "August 2023 – December 2023"],
-          "row2": ["Purdue University", "Indiana, USA"],
-          "description": [
-            {
-              "text": "Increased user satisfaction by 60% by creating a music tablature tool with React and Node.js, featuring auto-scroll and chord adjustments."
-            },
-            {
-              "text": "Implemented secure metadata storage and contributed to both frontend and backend, ensuring comprehensive project involvement and technology integration."
-            }
-          ]
-        },
-        {
-          "row1": ["Furniture App Based on Augmented Reality", "January 2018 – October 2018"],
-          "row2": ["Visvesvaraya Technological University", "Bengaluru, Karnataka, India"],
-          "description": [
-            {
-              "text": "Developed an AR-based Android app using C# and the Kudan SDK for furniture stores, presented at the 2018 ICACCI IEEE Bengaluru"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+    "Name": "John Doe",
+    "Phone": "(123)-456-7890",
+    "Email": "john.doe@example.com",
+    "Links": [
+      {
+        "Title": "linkedin.com/in/johndoe",
+        "Url": "linkedin.com/in/johndoe"
+      },
+      {
+        "Title": "github.com/johndoe",
+        "Url": "github.com/johndoe"
+      }
+    ],
+    "Sections": [
+      {
+        "Title": "Skills",
+        "Content": [
+          {
+            "description": [
+              {
+                "subTitle": "Languages",
+                "text": "Python, JavaScript, Java, C++"
+              },
+              {
+                "subTitle": "Technologies and Frameworks",
+                "text": "React, Node.js, Django, SpringBoot"
+              },
+              {
+                "subTitle": "Databases",
+                "text": "MySQL, PostgreSQL, MongoDB"
+              },
+              {
+                "subTitle": "Other Skills",
+                "text": "AWS, Docker, CI/CD, REST APIs"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Title": "Experience",
+        "Content": [
+          {
+            "row1": ["TechCorp", "January 2020 – July 2023"],
+            "row2": ["Software Engineer", "San Francisco, CA, USA"],
+            "description": [
+              {
+                "text": "Led the development of a scalable microservices architecture, reducing system downtime by 50%."
+              },
+              {
+                "text": "Implemented a CI/CD pipeline, accelerating release cycles by 30%."
+              },
+              {
+                "text": "Developed and maintained APIs with a focus on security and performance."
+              }
+            ]
+          },
+          {
+            "row1": ["Web Solutions Inc.", "August 2018 – December 2019"],
+            "row2": ["Junior Developer", "New York, NY, USA"],
+            "description": [
+              {
+                "text": "Contributed to the development of client-facing web applications using React and Node.js."
+              },
+              {
+                "text": "Collaborated with the design team to create user-friendly interfaces."
+              },
+              {
+                "text": "Optimized database queries, improving application response times by 25%."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Title": "Education",
+        "Content": [
+          {
+            "row1": ["University of Tech", "MS, Computer Science", "May 2020"],
+            "row2": [],
+            "description": []
+          },
+          {
+            "row1": ["State University", "BS, Computer Science", "May 2018"],
+            "row2": [],
+            "description": []
+          }
+        ]
+      },
+      {
+        "Title": "Projects",
+        "Content": [
+          {
+            "row1": ["Project Management Tool", "January 2022 – April 2022"],
+            "description": [
+              {
+                "text": "Developed a project management tool with React and Node.js, allowing teams to track and manage projects efficiently."
+              },
+              {
+                "text": "Integrated with third-party APIs for enhanced functionality."
+              }
+            ]
+          },
+          {
+            "row1": ["E-commerce Website", "August 2021 – December 2021"],
+            "description": [
+              {
+                "text": "Built a full-stack e-commerce website using Django and React, featuring secure payment processing and user authentication."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

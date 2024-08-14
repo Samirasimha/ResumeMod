@@ -45,11 +45,15 @@ const InitProduction = async () => {
         console.error("Error counting pages, exiting loop.");
         break;
     }
+    if (pageCount > 1){
+      console.log("Number of pages Exceeded.. Regenerating File.");
+    }
 
     fontSizeMultipler -= 0.05;
-    console.log("Number of pages Exceeded.. Regenerating File.");
+    
   }
 
+  console.log("Resume is Generated, Please look into the ./output folder for the files. ")
   return true;
 }
 
@@ -57,6 +61,12 @@ const InitProduction = async () => {
 // This simple example will only contain one section
 const CreateFiles = async () => {
   try {
+
+    if (!fs.existsSync(source)) {
+      console.log("No file found in the data folder");
+      return false; // Exit the function if the source file does not exist
+    }
+
     let document = CreateDocumentWithMetadata();
 
     var data = JSON.parse(fs.readFileSync(source));
@@ -572,3 +582,5 @@ export default {
   CreateFiles,
   InitProduction
 };
+
+(async() => InitProduction())();
