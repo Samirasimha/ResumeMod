@@ -23,6 +23,7 @@ class DocumentConfig {
     maxTitleSize: 11.5,
     contactInfoSize: 8.5,
     userNameSize: 14,
+    reductionOffset : 0.05
   };
 
   // Table column widths

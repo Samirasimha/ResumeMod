@@ -43,13 +43,25 @@ The Resume Conversion Tool is a Node.js application designed to transform resume
    ```
 
 2. **Install Dependencies:**
+
    ```bash
    npm install
    npm i nodemon
    ```
 
 3. **Set Up Input Data:**
-   - Prepare your resume data in a JSON format. Save your JSON file in the `./data` directory with the filename `MyResume.json`.
+   - Prepare your resume data in a JSON format. 
+
+
+4. **Set Up Environment Variables::**
+   - Create a .env file in the root of your project directory to store the source JSON file path and the output directory.
+   -	Add the following lines to your .env file:
+    ```bash
+    # Path to the source JSON file
+    SOURCE_PATH=./data/MyResume.json
+    # Directory for the output files (docx and pdf)
+    OUTPUT_DIR=./output/
+    ```
 
 ## Usage
 
@@ -59,7 +71,7 @@ The Resume Conversion Tool is a Node.js application designed to transform resume
    ```
 
 2. **Output Files:**
-   - The generated Docx and PDF files will be saved in the `./output` directory.
+   - The generated Docx and PDF files will be saved in the directory specified in the env variables.
    - The filenames will be automatically generated based on the name field in the JSON file.
 
 ## JSON Structure
@@ -207,9 +219,6 @@ You can easily add new sections to your resume by adding a new object to the Sec
 
 The application includes error handling to manage file creation and conversion processes. In case of an error, appropriate messages will be logged, and the process will attempt to continue where possible.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contribution
 
