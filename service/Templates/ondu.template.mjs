@@ -145,132 +145,55 @@ const GenerateAllSections = (data, document) => {
 };
 
 const GenerateNewRow = (row, rowNum, singleColumn = false) => {
-
-
-  if (singleColumn) {
+    const createTextRun = (text, bold = false, italics = false) => 
+      newTextRun({
+        text,
+        size: TextSizeMultipler(PageSpecifications.fontSize.maxContentSize),
+        bold,
+        italics,
+      });
+  
+    const createParagraph = (children, alignment) => 
+      new Paragraph({
+        children,
+        alignment,
+      });
+  
+    const createTableCell = (children, width = null, alignment = AlignmentType.LEFT) => 
+      new TableCell({
+        width: width ? { size: width, type: WidthType.PERCENTAGE } : undefined,
+        children: [createParagraph(children, alignment)],
+      });
+  
+    if (singleColumn) {
+      return new TableRow({
+        children: [
+          createTableCell([createTextRun(row, rowNum === 1, rowNum === 2)], 100),
+        ],
+      });
+    }
+  
+    if (row.length > 2) {
+      return new TableRow({
+        children: [
+          createTableCell([
+            createTextRun(row[0], true),
+            AddContactInfoData(" | ", null, false, true),
+            createTextRun(row[1], false, true),
+          ]),
+          createTableCell([createTextRun(row[2], true)], null, AlignmentType.RIGHT),
+        ],
+      });
+    }
+  
     return new TableRow({
       children: [
-        new TableCell({
-          width: {
-            size: 100,
-            type: WidthType.PERCENTAGE,
-          },
-          children: [
-            new Paragraph({
-              children: [
-                newTextRun({
-                  text: row,
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  bold: rowNum == 1,
-                  italics: rowNum == 2,
-                }),
-              ],
-              alignment: AlignmentType.LEFT,
-            }),
-          ],
-        })
+        createTableCell([createTextRun(row[0], rowNum === 1, rowNum === 2)], PageSpecifications.tableColumnWidth.left),
+        createTableCell([createTextRun(row[1], rowNum === 1, true)], PageSpecifications.tableColumnWidth.right, AlignmentType.RIGHT),
       ],
     });
-  }
-  else if (row.length > 2) {
-
-    return new TableRow({
-      children: [
-        new TableCell({
-          children: [
-            new Paragraph({
-              children: [
-                newTextRun({
-                  text: row[0],
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  bold: true,
-                }),
-                AddContactInfoData(" | ", null, false, true),
-                newTextRun({
-                  text: row[1],
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  italics: true,
-                })
-              ],
-              alignment: AlignmentType.LEFT,
-            }),
-          ],
-        }),
-        new TableCell({
-          children: [
-            new Paragraph({
-              children: [
-                newTextRun({
-                  text: row[2],
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  bold: true
-                }),
-              ],
-              alignment: AlignmentType.RIGHT,
-            }),
-          ],
-        }),
-      ],
-    });
-  }
-  else {
-    return new TableRow({
-      children: [
-        new TableCell({
-          width: {
-            size: PageSpecifications.tableColumnWidth.left,
-            type: WidthType.PERCENTAGE,
-          },
-          children: [
-            new Paragraph({
-              children: [
-                newTextRun({
-                  text: row[0],
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  bold: rowNum == 1,
-                  italics: rowNum == 2,
-                }),
-              ],
-              alignment: AlignmentType.LEFT,
-            }),
-          ],
-        }),
-        new TableCell({
-          width: {
-            size: PageSpecifications.tableColumnWidth.right,
-            type: WidthType.PERCENTAGE,
-          },
-          children: [
-            new Paragraph({
-              children: [
-                newTextRun({
-                  text: row[1],
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  bold: rowNum == 1,
-                  italics: true,
-                }),
-              ],
-              alignment: AlignmentType.RIGHT,
-            }),
-          ],
-        }),
-      ],
-    });
-  }
-};
-
+  };
+  
 const CreateTableWithMetadata = () => {
   return {
     width: {
