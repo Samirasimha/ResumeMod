@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import {
   Document,
   Packer,
@@ -14,10 +13,10 @@ import {
   LevelFormat,
   convertInchesToTwip,
 } from "docx";
-import PageSpecifications from "../../utils/pageSpecification.utils.mjs";
+import DocumentConfig from "../../utils/documentConfig.utils.mjs";
 
 
-let fontSizeMultipler = 1.0;
+let fontSizeMultipler = DocumentConfig.fontSizeMultiplier;
 
 
 const GenerateDocument = async (data, fontSizeReduction) => {
@@ -34,13 +33,12 @@ const GenerateDocument = async (data, fontSizeReduction) => {
 
     return docxDocument;
 
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
     return true;
   }
 };
-1
+
 const GenerateAllSections = (data, document) => {
   data.Sections.forEach((item) => {
 
@@ -49,21 +47,16 @@ const GenerateAllSections = (data, document) => {
       children: [
         newTextRun({
           text: item.Title.toUpperCase(),
-          size: TextSizeMultipler(PageSpecifications.fontSize.maxTitleSize),
+          size: TextSizeMultipler(DocumentConfig.fontSize.maxTitleSize),
           bold: true,
         }),
       ],
       border: {
-        bottom: {
-          color: "auto",
-          space: 1,
-          style: BorderStyle.SINGLE,
-          size: 6,
-        },
+        bottom: DocumentConfig.border.sectionHeaderBottom,
       },
       alignment: AlignmentType.LEFT,
       spacing: {
-        after: 100,
+        after: DocumentConfig.spacing.sectionHeaderAfter,
       },
     });
 
@@ -90,7 +83,7 @@ const GenerateAllSections = (data, document) => {
         document.sections[0].children.push(new Table(dataTable));
       }
 
-      //If Single Row Tables Exist. Add it here. 
+      //If Single Row Tables Exist. Add it here.
 
       if (section.SingleColumnTable && section.SingleColumnTable.length > 0) {
 
@@ -118,7 +111,7 @@ const GenerateAllSections = (data, document) => {
               newTextRun({
                 text: textDesc.subTitle + ": ",
                 size: TextSizeMultipler(
-                  PageSpecifications.fontSize.maxContentSize
+                  DocumentConfig.fontSize.maxContentSize
                 ),
                 bold: true,
               })
@@ -129,7 +122,7 @@ const GenerateAllSections = (data, document) => {
               newTextRun({
                 text: textDesc.text,
                 size: TextSizeMultipler(
-                  PageSpecifications.fontSize.maxContentSize
+                  DocumentConfig.fontSize.maxContentSize
                 ),
               })
             );
@@ -145,130 +138,53 @@ const GenerateAllSections = (data, document) => {
 };
 
 const GenerateNewRow = (row, rowNum, singleColumn = false) => {
+  const createTextRun = (text, bold = false, italics = false) =>
+    newTextRun({
+      text,
+      size: TextSizeMultipler(DocumentConfig.fontSize.maxContentSize),
+      bold,
+      italics,
+    });
 
+  const createParagraph = (children, alignment) =>
+    new Paragraph({
+      children,
+      alignment,
+    });
+
+  const createTableCell = (children, width = null, alignment = AlignmentType.LEFT) =>
+    new TableCell({
+      width: width ? { size: width, type: WidthType.PERCENTAGE } : undefined,
+      children: [createParagraph(children, alignment)],
+    });
 
   if (singleColumn) {
     return new TableRow({
       children: [
-        new TableCell({
-          width: {
-            size: 100,
-            type: WidthType.PERCENTAGE,
-          },
-          children: [
-            new Paragraph({
-              children: [
-                newTextRun({
-                  text: row,
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  bold: rowNum == 1,
-                  italics: rowNum == 2,
-                }),
-              ],
-              alignment: AlignmentType.LEFT,
-            }),
-          ],
-        })
+        createTableCell([createTextRun(row, rowNum === 1, rowNum === 2)], 100),
       ],
     });
   }
-  else if (row.length > 2) {
 
+  if (row.length > 2) {
     return new TableRow({
       children: [
-        new TableCell({
-          children: [
-            new Paragraph({
-              children: [
-                newTextRun({
-                  text: row[0],
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  bold: true,
-                }),
-                AddContactInfoData(" | ", null, false, true),
-                newTextRun({
-                  text: row[1],
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  italics: true,
-                })
-              ],
-              alignment: AlignmentType.LEFT,
-            }),
-          ],
-        }),
-        new TableCell({
-          children: [
-            new Paragraph({
-              children: [
-                newTextRun({
-                  text: row[2],
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  bold: true
-                }),
-              ],
-              alignment: AlignmentType.RIGHT,
-            }),
-          ],
-        }),
+        createTableCell([
+          createTextRun(row[0], true),
+          AddContactInfoData(" | ", null, false, true),
+          createTextRun(row[1], false, true),
+        ]),
+        createTableCell([createTextRun(row[2], true)], null, AlignmentType.RIGHT),
       ],
     });
   }
-  else {
-    return new TableRow({
-      children: [
-        new TableCell({
-          width: {
-            size: PageSpecifications.tableColumnWidth.left,
-            type: WidthType.PERCENTAGE,
-          },
-          children: [
-            new Paragraph({
-              children: [
-                newTextRun({
-                  text: row[0],
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  bold: rowNum == 1,
-                  italics: rowNum == 2,
-                }),
-              ],
-              alignment: AlignmentType.LEFT,
-            }),
-          ],
-        }),
-        new TableCell({
-          width: {
-            size: PageSpecifications.tableColumnWidth.right,
-            type: WidthType.PERCENTAGE,
-          },
-          children: [
-            new Paragraph({
-              children: [
-                newTextRun({
-                  text: row[1],
-                  size: TextSizeMultipler(
-                    PageSpecifications.fontSize.maxContentSize
-                  ),
-                  bold: rowNum == 1,
-                  italics: true,
-                }),
-              ],
-              alignment: AlignmentType.RIGHT,
-            }),
-          ],
-        }),
-      ],
-    });
-  }
+
+  return new TableRow({
+    children: [
+      createTableCell([createTextRun(row[0], rowNum === 1, rowNum === 2)], DocumentConfig.tableColumnWidth.left),
+      createTableCell([createTextRun(row[1], rowNum === 1, true)], DocumentConfig.tableColumnWidth.right, AlignmentType.RIGHT),
+    ],
+  });
 };
 
 const CreateTableWithMetadata = () => {
@@ -286,7 +202,7 @@ const CreateTableWithMetadata = () => {
       insideHorizontal: { style: BorderStyle.NIL },
     },
     rows: [],
-    spacing: { after: 100 },
+    spacing: { after: DocumentConfig.spacing.tableAfter },
   };
 };
 
@@ -295,7 +211,7 @@ const CreateHeader = (data, document) => {
     children: [
       newTextRun({
         text: data.Name.toUpperCase(),
-        size: TextSizeMultipler(PageSpecifications.fontSize.userNameSize),
+        size: TextSizeMultipler(DocumentConfig.fontSize.userNameSize),
       }),
     ],
     alignment: AlignmentType.CENTER,
@@ -328,7 +244,7 @@ const CreateHeader = (data, document) => {
   return document;
 };
 
-const TextSizeMultipler = (size, multiplyBy = 2) => {
+const TextSizeMultipler = (size, multiplyBy = DocumentConfig.fontSizeMultiplier) => {
   return size * multiplyBy * fontSizeMultipler;
 };
 
@@ -338,17 +254,17 @@ const AddContactInfoData = (info, hyperLink = null, isEmail = false, isSizeMax =
       children: [
         newTextRun({
           text: info,
-          size: TextSizeMultipler(isSizeMax ? PageSpecifications.fontSize.maxContentSize : PageSpecifications.fontSize.contactInfoSize),
+          size: TextSizeMultipler(isSizeMax ? DocumentConfig.fontSize.maxContentSize : DocumentConfig.fontSize.contactInfoSize),
           style: "Hyperlink",
         }),
       ],
-      link: isEmail ? "" : "http://" + hyperLink,
+      link: isEmail ? "" : DocumentConfig.hyperlink.defaultLinkPrefix + hyperLink,
     });
   }
 
   return newTextRun({
     text: info,
-    size: TextSizeMultipler(isSizeMax ? PageSpecifications.fontSize.maxContentSize : PageSpecifications.fontSize.contactInfoSize),
+    size: TextSizeMultipler(isSizeMax ? DocumentConfig.fontSize.maxContentSize : DocumentConfig.fontSize.contactInfoSize),
   });
 };
 
@@ -358,69 +274,17 @@ const CreateDocumentWithMetadata = () => {
       config: [
         {
           reference: "my-unique-bullet-points",
-          levels: [
-            {
-              level: 0,
-              format: LevelFormat.BULLET,
-              text: "\u2022",
-              alignment: AlignmentType.LEFT,
-              style: {
-                paragraph: {
-                  indent: {
-                    left: convertInchesToTwip(0.2),
-                    hanging: convertInchesToTwip(0.1),
-                  },
-                },
+          levels: DocumentConfig.bullets.map((bullet, index) => ({
+            level: index,
+            format: LevelFormat.BULLET,
+            text: bullet,
+            alignment: AlignmentType.LEFT,
+            style: {
+              paragraph: {
+                indent: DocumentConfig.textIndentation[`level${index}`],
               },
             },
-            {
-              level: 1,
-              format: LevelFormat.BULLET,
-              text: "\u00A5",
-              alignment: AlignmentType.LEFT,
-              style: {
-                paragraph: {
-                  indent: {
-                    left: convertInchesToTwip(1),
-                    hanging: convertInchesToTwip(0.25),
-                  },
-                },
-              },
-            },
-            {
-              level: 2,
-              format: LevelFormat.BULLET,
-              text: "\u273F",
-              alignment: AlignmentType.LEFT,
-              style: {
-                paragraph: {
-                  indent: { left: 2160, hanging: convertInchesToTwip(0.25) },
-                },
-              },
-            },
-            {
-              level: 3,
-              format: LevelFormat.BULLET,
-              text: "\u267A",
-              alignment: AlignmentType.LEFT,
-              style: {
-                paragraph: {
-                  indent: { left: 2880, hanging: convertInchesToTwip(0.25) },
-                },
-              },
-            },
-            {
-              level: 4,
-              format: LevelFormat.BULLET,
-              text: "\u2603",
-              alignment: AlignmentType.LEFT,
-              style: {
-                paragraph: {
-                  indent: { left: 3600, hanging: convertInchesToTwip(0.25) },
-                },
-              },
-            },
-          ],
+          })),
         },
       ],
     },
@@ -428,12 +292,7 @@ const CreateDocumentWithMetadata = () => {
       {
         properties: {
           page: {
-            margin: {
-              top: PageSpecifications.pageMargin.top,
-              right: PageSpecifications.pageMargin.right,
-              bottom: PageSpecifications.pageMargin.bottom,
-              left: PageSpecifications.pageMargin.left,
-            },
+            margin: DocumentConfig.pageMargin,
           },
         },
         children: [],
@@ -450,7 +309,7 @@ const createSpacer = () => {
       }),
     ],
     spacing: {
-      after: 20, // Adjust space after the blank line, if needed
+      after: DocumentConfig.spacing.spacerAfter, // Adjust space after the blank line
     },
   });
 };
@@ -463,15 +322,15 @@ const createContentSpacer = () => {
       }),
     ],
     spacing: {
-      before: 50, // Space before the paragraph starts
-      after: 50, // Space after the paragraph ends
-      line: 50, // This sets line spacing; adjust as needed (values are in twentieths of a point)
+      before: DocumentConfig.spacing.contentSpacerBefore, // Space before the paragraph starts
+      after: DocumentConfig.spacing.contentSpacerAfter, // Space after the paragraph ends
+      line: DocumentConfig.spacing.contentSpacerLine, // This sets line spacing
     }
   });
 };
 
 const newTextRun = (params) => {
-  params.font = PageSpecifications.font;
+  params.font = DocumentConfig.font;
   return new TextRun(params);
 }
 

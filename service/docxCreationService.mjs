@@ -1,28 +1,21 @@
 import * as fs from "fs";
 
 import {
-  Document,
-  Packer,
-  Paragraph,
-  TextRun,
-  AlignmentType,
-  ExternalHyperlink,
-  BorderStyle,
-  TableCell,
-  Table,
-  TableRow,
-  WidthType,
-  LevelFormat,
-  convertInchesToTwip,
+  Packer
 } from "docx";
-import PageSpecifications from "../utils/pageSpecification.utils.mjs";
 import path from 'path';
 import { PDFDocument } from 'pdf-lib';
 import unoconv from 'awesome-unoconv';
 import template_ondu from './Templates/ondu.template.mjs';
+import OutputFileSpecifications from '../utils/outputFileSpecs.utils.mjs';
+import DocumentConfig from '../utils/documentConfig.utils.mjs';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const outputDir = "./output/"
-const source = './data/MyResume.json';
+console.log(process.env.SOURCE_PATH);
+const source = process.env.SOURCE_PATH || './data/MyResume.json';
+const outputDir = process.env.OUTPUT_DIR || './output/';
+
 let fileName = "";
 let fontSizeMultipler = 1.0;
 
@@ -38,7 +31,7 @@ const InitProduction = async () => {
   await SetFileName(parsedJsonResume);
 
   let pageCount = 2;
-  while (pageCount > 1) {
+  while (pageCount > OutputFileSpecifications.pageLimit) {
 
     const document = await template_ondu.GenerateDocument(parsedJsonResume,fontSizeMultipler);
     if (!document) {
@@ -53,11 +46,11 @@ const InitProduction = async () => {
       console.error("Error counting pages, exiting loop.");
       break;
     }
-    if (pageCount > 1) {
+    if (pageCount > OutputFileSpecifications.pageLimit) {
       console.log("Number of pages Exceeded.. Regenerating File.");
     }
 
-    fontSizeMultipler -= 0.05;
+    fontSizeMultipler -= DocumentConfig.fontSize.reductionOffset;
 
   }
 
