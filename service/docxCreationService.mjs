@@ -19,8 +19,6 @@ import PageSpecifications from "../utils/pageSpecification.utils.mjs";
 import path from 'path';
 import { PDFDocument } from 'pdf-lib';
 import unoconv from 'awesome-unoconv';
-import { json } from "express";
-import RegexSpecs from "../utils/regex.utils.mjs";
 
 const source = "./data/MyResume.json";
 const outputDir = "./output/"
@@ -36,21 +34,21 @@ const InitProduction = async () => {
 
     const fileCreated = await CreateFiles();
     if (!fileCreated) {
-        console.error("File creation failed, exiting loop.");
-        break;
+      console.error("File creation failed, exiting loop.");
+      break;
     }
 
     pageCount = await countPages();
     if (pageCount === null) {
-        console.error("Error counting pages, exiting loop.");
-        break;
+      console.error("Error counting pages, exiting loop.");
+      break;
     }
-    if (pageCount > 1){
+    if (pageCount > 1) {
       console.log("Number of pages Exceeded.. Regenerating File.");
     }
 
     fontSizeMultipler -= 0.05;
-    
+
   }
 
   console.log("Resume is Generated, Please look into the ./output folder for the files. ")
@@ -166,12 +164,12 @@ const GenerateAllSections = (data, document) => {
 
       //If Single Row Tables Exist. Add it here. 
 
-      if (section.SingleColumnTable && section.SingleColumnTable.length > 0){
+      if (section.SingleColumnTable && section.SingleColumnTable.length > 0) {
 
         let singleColumnDataTable = CreateTableWithMetadata();
 
         section.SingleColumnTable.forEach((item) => {
-          singleColumnDataTable.rows.push(GenerateNewRow(item, 2,true))
+          singleColumnDataTable.rows.push(GenerateNewRow(item, 2, true))
         });
 
         document.sections[0].children.push(new Table(singleColumnDataTable));
@@ -221,7 +219,7 @@ const GenerateAllSections = (data, document) => {
 const GenerateNewRow = (row, rowNum, singleColumn = false) => {
 
 
-  if (singleColumn){
+  if (singleColumn) {
     return new TableRow({
       children: [
         new TableCell({
@@ -263,7 +261,7 @@ const GenerateNewRow = (row, rowNum, singleColumn = false) => {
                   ),
                   bold: true,
                 }),
-                AddContactInfoData(" | ",null,false,true),
+                AddContactInfoData(" | ", null, false, true),
                 newTextRun({
                   text: row[1],
                   size: TextSizeMultipler(
@@ -583,4 +581,4 @@ export default {
   InitProduction
 };
 
-(async() => InitProduction())();
+(async () => InitProduction())();
