@@ -10,7 +10,13 @@ import template_ondu from './Templates/ondu.template.mjs';
 import OutputFileSpecifications from '../utils/outputFileSpecs.utils.mjs';
 import DocumentConfig from '../utils/documentConfig.utils.mjs';
 import dotenv from 'dotenv';
+import libre from 'libreoffice-convert'; // Using ES6 import syntax
+import { promisify } from 'util';         // Import promisify from util
+
+libre.convertAsync = promisify(libre.convert);
+
 dotenv.config();
+
 
 console.log(process.env.SOURCE_PATH);
 const source = process.env.SOURCE_PATH || './data/MyResume.json';
@@ -103,21 +109,36 @@ const countPages = async () => {
   }
 }
 
-const ExportToPdf = async () => {
+const readFileAsync = promisify(fs.readFile);
+const writeFileAsync = promisify(fs.writeFile);
 
-  const sourceFilePath = path.resolve(getDocxFileName());
-  const outputFilePath = path.resolve(getPdfFileName());
-  await unoconv
-    .convert(sourceFilePath, outputFilePath)
-    .then(result => {
-      console.log(result); // return outputFilePath
-      return true;
-    })
-    .catch(err => {
-      return true;
+const ExportToPdf = async () => {
+  const ext = '.pdf';
+  const inputPath = path.resolve(getDocxFileName());
+  const outputPath = path.resolve(getPdfFileName());
+
+  try {
+    // Read file using the promisified readFile
+    const docxBuf = await readFileAsync(inputPath);
+
+    // Manually wrap `libre.convert` in a Promise
+    const pdfBuf = await new Promise((resolve, reject) => {
+      libre.convert(docxBuf, ext, undefined, (err, done) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(done);
+      });
     });
 
-}
+    // Write the converted PDF file to the output path
+    await writeFileAsync(outputPath, pdfBuf);
+    return true;
+  } catch (err) {
+    console.error(`Error during PDF conversion: ${err.message}`);
+    return false;
+  }
+};
 
 export default {
   InitProduction
