@@ -3,7 +3,7 @@
 
 ## Overview
 
-The Resume Conversion Tool is a Node.js application designed to transform resumes from a JSON format into Docx and PDF files. The tool leverages `docx`, `pdf-lib`, and `awesome-unoconv` libraries to generate professional one-page resumes. It includes customizable templates and dynamically adjusts text sizes and margins to ensure that the content fits perfectly on a single page.
+The Resume Conversion Tool is a Node.js application designed to transform resumes from a JSON format into Docx and PDF files. The tool leverages `docx`, `pdf-lib`, and `libreoffice-convert` libraries to generate professional one-page resumes. It includes customizable templates and dynamically adjusts text sizes and margins to ensure that the content fits perfectly on a single page.
 
 ## Features
 
@@ -18,13 +18,13 @@ The Resume Conversion Tool is a Node.js application designed to transform resume
 - **Node.js**: The primary runtime environment.
 - **docx**: Used for creating and manipulating Docx files.
 - **pdf-lib**: Used for counting pages and manipulating PDF files.
-- **awesome-unoconv**: Utilized for converting Docx files to PDF format.
+- **libreoffice-convert**: Utilized for converting Docx files to PDF format.
 - **JavaScript**: The programming language used for development.
 
 ## Prerequisites
 
 - **Node.js**: Ensure you have Node.js installed. You can download it from [here](https://nodejs.org/).
-- **LibreOffice**: LibreOffice must be installed because the `awesome-unoconv` library requires LibreOffice to perform the conversion from Docx to PDF. You can download and install LibreOffice from [here](https://www.libreoffice.org/download/download/).
+- **LibreOffice**: LibreOffice must be installed because the `libreoffice-convert` library requires LibreOffice to perform the conversion from Docx to PDF. You can download and install LibreOffice from [here](https://www.libreoffice.org/download/download/).
 
   ### Installing LibreOffice:
   - **Windows/MacOS**: Download the installer from the link above and follow the installation instructions.
