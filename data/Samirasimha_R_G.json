@@ -1,0 +1,168 @@
+{
+  "Name": "Samirasimha Rajasimha",
+  "Phone": "(260)-905-9637",
+  "Email": "samirasimha.26@gmail.com",
+  "Links": [
+    {
+      "Title": "linkedin.com/in/samirasimha",
+      "Url": "linkedin.com/in/samirasimha"
+    },
+    {
+      "Title": "github.com/Samirasimha",
+      "Url": "github.com/Samirasimha"
+    }
+  ],
+  "Sections": [
+    {
+      "Title": "Skills",
+      "Content": [
+        {
+          "description": [
+            {
+              "subTitle": "Languages",
+              "text": "C#, **JavaScript**, SQL, TypeScript"
+            },
+            {
+              "subTitle": "Technologies and Frameworks",
+              "text": ".NET Core, ASP.NET Core, Node.js, ExpressJS, ReactJS, Bun, Elysia"
+            },
+            {
+              "subTitle": "Databases",
+              "text": "SQL Server, MySQL, MongoDB, Entity Framework, LINQ"
+            },
+            {
+              "subTitle": "Other Skills",
+              "text": "CI/CD, API Development, SDLC, Web Services, Web APIs, Source Control, Git, Gitflow, Docker"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Title": "Experience",
+      "Content": [
+        {
+          "row1": ["The Donovan's Venom, Inc.", "June 2024 – Present"],
+          "row2": ["Back End Team Lead", "New York, USA"],
+          "description": [
+            {
+              "text": "Led a team of three developers, utilizing .NET Core, ASP.NET Core, and SQL Server to design and deliver high-performance applications."
+            },
+            {
+              "text": "Developed and implemented core functionalities in ASP.NET Core web applications and APIs, ensuring adherence to project requirements."
+            },
+            {
+              "text": "Collaborated with **cross-functional** teams and business stakeholders to deliver solutions aligned with client needs."
+            },
+            {
+              "text": "Integrated CI/CD **pipelines and performed** unit testing to ensure high code quality and timely deployment."
+            }
+          ]
+        },
+        
+        {
+          "row1": ["Gravity iLabs", "January 2019 – July 2022"],
+          "row2": ["Software Engineer", "Bengaluru, Karnataka, India"],
+          "description": [
+            {
+              "text": "Reduced development time by 80 man-hours per week by writing reusable libraries and refactoring code into microservices using .NET Core, achieving an 80% reduction in API response times."
+            },
+            {
+              "text": "Enhanced admin role management, cutting development time by 80% with role-based access systems."
+            },
+            {
+              "text": "Cut development by 40 hours/week and maintenance by 30% by componentizing UI elements in AngularJS."
+            },
+            {
+              "text": "Cut QA testing times by 25% through implementing Jasmine for front-end unit testing"
+            },
+            {
+              "text": "Accelerated release cycles by 50% and enhanced deployment reliability by implementing an Azure DevOps CI/CD pipeline."
+            },
+            {
+              "text": "Boosted app performance by 40% and cut database load using Azure Functions and Redis Cache."
+            },
+            {
+              "text": "Enhanced database performance by 60% through efficient stored procedures in SQL Server, optimizing data retrieval."
+            }
+          ]
+        },
+        {
+          "row1": ["Infosys Ltd", "February 2018 – December 2018"],
+          "row2": ["Systems Engineer", "Mysuru, Karnataka, India"],
+          "description": [
+            {
+              "text": "Built enterprise-level applications using .NET, SQL, and ASP.NET, contributing to business process improvement projects."
+            },
+            {
+              "text": "Developed web services and worked on system enhancements and bug fixes for clients in the financial sector."
+            }
+          ]
+        },
+        {
+          "row1": ["Gravity iLabs", "July 2017 – August 2017"],
+          "row2": ["Software Development Intern", "Bengaluru, Karnataka, India"],
+          "description": [
+            {
+              "text": "Developed a full-stack application using .NET Core and Angular for portfolio management, improving client engagement."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Title": "Education",
+      "Content": [
+        {
+          "row1": ["Purdue University", "MS, Computer Science", "May 2024"],
+          "row2": [],
+          "description": []
+        },
+        {
+          "row1": ["Visvesvaraya Technological University", "BE, Computer Science", "May 2018"],
+          "row2": [],
+          "description": []
+        }
+      ]
+    },
+    {
+      "Title": "Projects",
+      "Content": [
+        {
+          "row1": ["Weight Lifting Tracker", "January 2024 – May 2024"],
+          "description": [
+            {
+              "text": "Developed a comprehensive web application using .NET Core and React, allowing users to log and monitor their weight lifting workouts with ease. Utilized SQL Server for database management and Entity Framework for ORM."
+            },
+            {
+              "text": "Implemented secure user authentication with ASP.NET Identity and JWT, and developed interactive progress charts using Chart.js. Utilized Azure Service Bus for notifications and reminders, and deployed the application on Azure using Docker for scalability and high availability."
+            }
+          ]
+        },
+        {
+          "row1": ["Resume Generation", "July 2024 – August 2024"],
+          "description": [
+            {
+              "text": "Developed an application using Node.js along with docx, pdf-lib, and awesome-unoconv libraries to convert JSON resumes into Docx and PDF formats."
+            },
+            {
+              "text": "Implemented customizable templates with adjustable fonts, text sizes, and layouts, providing flexibility in resume formatting."
+            },
+            {
+              "text": "Optimized document generation with algorithms that dynamically adjust margins and text sizes, ensuring content fits within a single page without compromising readability."
+            }
+          ]
+        },
+        {
+          "row1": ["Furniture App Based on Augmented Reality", "January 2018 – October 2018"],
+          "row2": ["Visvesvaraya Technological University", "Bengaluru, Karnataka, India"],
+          "description": [
+            {
+              "text": "Built an AR-based Android app using C# and Kudan SDK for furniture stores, presented at 2018 ICACCI IEEE Bengaluru."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

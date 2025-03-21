@@ -1,0 +1,166 @@
+{
+  "Name": "Samirasimha Rajasimha",
+  "Phone": "(260)-905-9637",
+  "Email": "samirasimha.26@gmail.com",
+  "Links": [
+    {
+      "Title": "linkedin.com/in/samirasimha",
+      "Url": "linkedin.com/in/samirasimha"
+    },
+    {
+      "Title": "github.com/Samirasimha",
+      "Url": "github.com/Samirasimha"
+    }
+  ],
+  "Sections": [
+    {
+      "Title": "Skills",
+      "Content": [
+        {
+          "description": [
+            {
+              "subTitle": "Languages",
+              "text": "C#, HTML/CSS, JavaScript, Python, SQL, TypeScript, T-SQL"
+            },
+            {
+              "subTitle": "Technologies and Frameworks",
+              "text": ".NET Framework, .NET Core, ASP.NET Core MVC, ASP.NET Web API, Node.js, ExpressJS, ReactJS, AngularJS, Microservices, REST APIs, SignalR, gRPC, DDD, TDD"
+            },
+            {
+              "subTitle": "Databases",
+              "text": "SQL Server, Azure SQL Database, MySQL, MongoDB, Redis, Stored Procedures, Entity Framework, Postgres, NoSQL"
+            },
+            {
+              "subTitle": "Cloud",
+              "text": "Azure, AWS, Azure DevOps, CI/CD, Helm, AWS CloudFormation, OAuth2, Docker, Azure Service Bus, Jenkins, Kubernetes, Azure Cosmos DB, Azure Functions, Terraform, Git, GitHub, GitLab"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Title": "Experience",
+      "Content": [
+        {
+          "row1": ["The Donovan's Venom, Inc.", "June 2024 – Present"],
+          "row2": ["Back End Team Lead", "New York, USA"],
+          "description": [
+            {
+              "text": "Led a team of three developers in an Agile environment, utilizing .NET 6, ASP.NET Core, and PostgreSQL to design and deliver high-performance, scalable microservices applications."
+            },
+            {
+              "text": "Implemented CI/CD pipelines using Jenkins and automated deployments across multiple environments with Helm and AWS CloudFormation, leveraging Kubernetes for orchestration and ensuring high availability."
+            },
+            {
+              "text": "Integrated PayPal API for secure payment processing, facilitating easier donations and improving financial operations, increasing donor satisfaction by 20%."
+            }
+          ]
+        },
+        {
+          "row1": ["Gravity iLabs", "January 2019 – July 2022"],
+          "row2": ["Software Engineer", "Bengaluru, Karnataka, India"],
+          "description": [
+            {
+              "text": "Developed reusable .NET Core libraries and transformed a monolithic architecture into microservices using Docker and Kubernetes, improving scalability, maintainability, and modularity by 60%."
+            },
+            {
+              "text": "Cut QA testing times by 25% by implementing automated unit and integration testing frameworks using XUnit and Moq, enhancing code quality and reliability."
+            },
+            {
+              "text": "Accelerated release cycles by 50% and enhanced deployment reliability by implementing CI/CD pipelines using Azure DevOps Pipelines and automating builds with Jenkins Groovy scripts."
+            },
+            {
+              "text": "Boosted application performance by 40% and reduced database load by implementing Azure Functions with Cosmos DB triggers for asynchronous real-time data processing and utilizing Redis Cache for faster data retrieval."
+            },
+            {
+              "text": "Enhanced database performance by 60% during project stage transitions by optimizing SQL Server stored procedures, implementing indexing strategies, and utilizing batch operations."
+            }
+          ]
+        },
+        {
+          "row1": ["Infosys Ltd", "February 2018 – December 2018"],
+          "row2": ["Systems Engineer", "Mysuru, Karnataka, India"],
+          "description": [
+            {
+              "text": "Achieved a 40% improvement in transaction efficiency and a 30% reduction in client transaction times by developing a full-stack financial analysis tool using ASP.NET Core and Angular."
+            },
+            {
+              "text": "Reduced data breach risks by 50% by developing secure RESTful APIs using ASP.NET Web API, implementing OAuth2 and JWT for authentication and authorization."
+            },
+            {
+              "text": "Cut operational costs by 20% by optimizing resource allocation of Azure services like Azure Service Bus and Blob Storage, consolidating storage accounts, and organizing data efficiently across containers."
+            }
+          ]
+        },
+        {
+          "row1": ["Gravity iLabs", "July 2017 – August 2017"],
+          "row2": ["Software Development Intern", "Bengaluru, Karnataka, India"],
+          "description": [
+            {
+              "text": "Streamlined Portfolio Budget Statements management by developing a full-stack application using ASP.NET Core and Angular, automating processes and enhancing functionality by 30%."
+            },
+            {
+              "text": "Boosted stakeholder engagement and saved 70 man-hours weekly by automating email communications using .NET Core's SMTP libraries and integrating with Microsoft Exchange."
+            },
+            {
+              "text": "Achieved over 95% accuracy in sentiment analysis by integrating Microsoft Cognitive Services APIs, optimizing communication strategies."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Title": "Education",
+      "Content": [
+        {
+          "row1": ["Purdue University", "MS, Computer Science", "May 2024"],
+          "row2": [],
+          "description": []
+        },
+        {
+          "row1": ["Visvesvaraya Technological University", "BE, Computer Science", "May 2018"],
+          "row2": [],
+          "description": []
+        }
+      ]
+    },
+    {
+      "Title": "Projects",
+      "Content": [
+        {
+          "row1": ["Weight Lifting Tracker", "January 2024 – May 2024"],
+          "description": [
+            {
+              "text": "Developed a comprehensive web application using .NET Core and React, allowing users to log and monitor their weight lifting workouts with ease. Utilized SQL Server for database management and Entity Framework for ORM."
+            },
+            {
+              "text": "Implemented secure user authentication with ASP.NET Identity and JWT, and developed interactive progress charts using Chart.js. Utilized Azure Service Bus for notifications and reminders, and deployed the application on Azure using Docker for scalability and high availability."
+            }
+          ]
+        },
+        {
+          "row1": ["Resume Generation", "July 2024 – August 2024"],
+          "description": [
+            {
+              "text": "Developed an application using Node.js along with docx, pdf-lib, and awesome-unoconv libraries to convert JSON resumes into Docx and PDF formats."
+            },
+            {
+              "text": "Implemented customizable templates with adjustable fonts, text sizes, and layouts, providing flexibility in resume formatting."
+            },
+            {
+              "text": "Optimized document generation with algorithms that dynamically adjust margins and text sizes, ensuring content fits within a single page without compromising readability."
+            }
+          ]
+        },
+        {
+          "row1": ["Furniture App Based on Augmented Reality", "January 2018 – October 2018"],
+          "description": [
+            {
+              "text": "Built an AR-based Android app using C# and Kudan SDK for furniture stores, presented at 2018 ICACCI IEEE Bengaluru."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
